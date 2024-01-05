@@ -1,0 +1,7 @@
+/cloud/secrets.auto.tfvars
+/cloud/.terraform.lock.hcl
+/cloud/terraform.tfstate
+/cloud/.terraform.tfstate.lock.info
+/cloud/terraform-plugin-proxmox.log
+/cloud/terraform.tfstate.backup
+/cloud/provider/secrets.auto.tfvars
