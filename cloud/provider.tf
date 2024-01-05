@@ -32,7 +32,7 @@ resource "proxmox_virtual_environment_vm" "node" {
   initialization {
     ip_config {
       ipv4 {
-        address = "${cidrhost(var.vm_ip_base, count.index)}/${regex("\\/\\d+", var.vm_ip_base)}"
+        address = "${cidrhost(var.vm_cidr_ip_base, count.index)}/${var.vm_ip_mask}"
         gateway = var.gateway
       }
     }

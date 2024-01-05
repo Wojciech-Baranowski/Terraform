@@ -41,6 +41,10 @@ variable "vm_description" {
   type = string
 }
 
-variable "vm_ip_base" {
+variable "vm_cidr_ip_base" {
+  type = string
+}
+
+variable "vm_ip_mask" {
   type = string
 }
