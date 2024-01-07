@@ -13,28 +13,26 @@ provider "proxmox" {
   insecure = true
 }
 
-resource "proxmox_virtual_environment_vm" "node" {
+module "worker-node" {
+  source = "./templates/worker-node"
+  vm_count = 2
+  vm_id_base = 201
+  template_id = 200
+  vm_name = "worker-node"
+  vm_description = "cloud worker node"
+  vm_cidr_ip_base = "192.168.1.128/27"
+  vm_ip_mask = "24"
+  gateway = "192.168.1.1"
+}
 
-  count = var.vm_count
-  vm_id = var.vm_id_base + count.index
-  name = "${var.vm_name}-${count.index + 1}"
-  description = var.vm_description
-  node_name = "pve"
-
-  clone {
-    vm_id = var.template_id
-  }
-
-  agent {
-    enabled = true
-  }
-
-  initialization {
-    ip_config {
-      ipv4 {
-        address = "${cidrhost(var.vm_cidr_ip_base, count.index)}/${var.vm_ip_mask}"
-        gateway = var.gateway
-      }
-    }
-  }
+module "master-node" {
+  source = "./templates/master-node"
+  vm_count = 1
+  vm_id_base = 301
+  template_id = 300
+  vm_name = "master-node"
+  vm_description = "cloud master node"
+  vm_cidr_ip_base = "192.168.1.112/28"
+  vm_ip_mask = "24"
+  gateway = "192.168.1.1"
 }

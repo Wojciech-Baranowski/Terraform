@@ -1,4 +1,4 @@
-/cloud/secrets.auto.tfvars
+/cloud/provider-secrets.auto.tfvars
 /cloud/.terraform.lock.hcl
 /cloud/terraform.tfstate
 /cloud/.terraform.tfstate.lock.info
