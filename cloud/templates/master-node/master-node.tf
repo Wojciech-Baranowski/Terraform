@@ -15,6 +15,10 @@ resource "proxmox_virtual_environment_vm" "master-node" {
   description = var.vm_description
   node_name = "pve"
 
+  network_device {
+    bridge = var.bridge
+  }
+
   clone {
     vm_id = var.template_id
   }
@@ -22,11 +26,10 @@ resource "proxmox_virtual_environment_vm" "master-node" {
   agent {
     enabled = true
   }
-
   initialization {
     ip_config {
       ipv4 {
-        address = "${cidrhost(var.vm_cidr_ip_base, count.index)}/${var.vm_ip_mask}"
+        address = "${cidrhost(var.vm_cidr_ip, count.index)}${regex("\\/\\d*", var.vm_cidr_ip)}"
         gateway = var.gateway
       }
     }

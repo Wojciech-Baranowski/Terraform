@@ -18,14 +18,14 @@ variable "vm_description" {
   type = string
 }
 
-variable "vm_cidr_ip_base" {
-  type = string
-}
-
-variable "vm_ip_mask" {
+variable "vm_cidr_ip" {
   type = string
 }
 
 variable "gateway" {
+  type = string
+}
+
+variable "bridge" {
   type = string
 }
