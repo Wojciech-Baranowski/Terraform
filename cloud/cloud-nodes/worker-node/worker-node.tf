@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-resource "proxmox_virtual_environment_vm" "master-node" {
+resource "proxmox_virtual_environment_vm" "worker_node" {
 
   count = var.vm_count
   vm_id = var.vm_id_base + count.index
@@ -26,6 +26,7 @@ resource "proxmox_virtual_environment_vm" "master-node" {
   agent {
     enabled = true
   }
+
   initialization {
     ip_config {
       ipv4 {
@@ -34,4 +35,8 @@ resource "proxmox_virtual_environment_vm" "master-node" {
       }
     }
   }
+}
+
+output "ip_addresses" {
+  value = [for ip in tolist(proxmox_virtual_environment_vm.worker_node[*].initialization[0].ip_config[0].ipv4[0].address) : regex("[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+", ip)]
 }

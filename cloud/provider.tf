@@ -7,6 +7,21 @@ terraform {
   }
 }
 
+variable "user" {
+  type = string
+  default = "simmondobber"
+}
+
+variable "proxmox_ip" {
+  type = string
+  default = "192.168.1.2"
+}
+
+variable "proxmox_port" {
+  type = string
+  default = "8006"
+}
+
 variable "proxmox_api_token_id" {
   type = string
   sensitive = true
@@ -18,7 +33,7 @@ variable "proxmox_api_token_secret" {
 }
 
 provider "proxmox" {
-  endpoint = "https://192.168.1.2:8006/api2/json"
+  endpoint = "https://${var.proxmox_ip}:${var.proxmox_port}/api2/json"
   api_token = "${var.proxmox_api_token_id}=${var.proxmox_api_token_secret}"
   insecure = true
 }

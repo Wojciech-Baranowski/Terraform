@@ -1,5 +1,5 @@
 module "master-node" {
-  source = "./templates/master-node"
+  source = "./cloud-nodes/master-node"
   vm_count = 1
   vm_id_base = 300
   template_id = 200
@@ -11,7 +11,7 @@ module "master-node" {
 }
 
 module "worker-node" {
-  source = "./templates/worker-node"
+  source = "./cloud-nodes/worker-node"
   vm_count = 2
   vm_id_base = 301
   template_id = 201
