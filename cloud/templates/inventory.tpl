@@ -1,3 +1,6 @@
+[localhost]
+localhost
+
 [bastion]
 ${ bastion }
 

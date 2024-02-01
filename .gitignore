@@ -5,3 +5,4 @@
 /cloud/terraform-plugin-proxmox.log
 /cloud/terraform.tfstate.backup
 /cloud/provider/secrets.auto.tfvars
+/cloud/.terraform/
