@@ -1,6 +1,6 @@
 module "master-node" {
   source = "./cloud-nodes/master-node"
-  vm_count = 1
+  vm_count = 3
   vm_id_base = 300
   template_id = 200
   vm_name = "master-node"
@@ -12,8 +12,8 @@ module "master-node" {
 
 module "worker-node" {
   source = "./cloud-nodes/worker-node"
-  vm_count = 2
-  vm_id_base = 301
+  vm_count = 3
+  vm_id_base = 310
   template_id = 201
   vm_name = "worker-node"
   vm_description = "cloud worker node"

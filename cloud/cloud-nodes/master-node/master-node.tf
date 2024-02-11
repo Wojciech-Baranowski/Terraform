@@ -15,6 +15,9 @@ resource "proxmox_virtual_environment_vm" "master_node" {
   description = var.vm_description
   node_name = "pve"
 
+  timeout_clone = 3600
+  timeout_create = 3600
+
   network_device {
     bridge = var.bridge
   }
